@@ -7,18 +7,19 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "lint:fix": "eslint src --fix && yarn format",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx src --fix && yarn format",
     "lint:strict": "eslint --max-warnings=0 src",
     "typecheck": "tsc --noEmit --incremental false",
     "test:watch": "jest --watch",
     "test": "jest",
-    "format": "prettier -w .",
-    "format:check": "prettier -c .",
     "postbuild": "next-sitemap --config next-sitemap.config.js",
     "prepare": "husky install"
   },
   "dependencies": {
     "clsx": "^1.2.1",
+    "jsonwebtoken": "^9.0.0",
     "next": "^13.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -32,6 +33,7 @@
     "@tailwindcss/forms": "^0.5.3",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
+    "@types/jsonwebtoken": "^9.0.2",
     "@types/react": "^18.0.33",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
@@ -54,11 +56,11 @@
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
-      "eslint --max-warnings=0",
-      "prettier -w"
+      "eslint --max-warnings=0 --fix",
+      "prettier --write"
     ],
     "**/*.{json,css,scss,md,webmanifest}": [
-      "prettier -w"
+      "prettier --write"
     ]
   }
 }
