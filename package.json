@@ -7,13 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx src --fix && yarn format",
+    "lint:fix": "eslint src --fix && yarn format",
     "lint:strict": "eslint --max-warnings=0 src",
     "typecheck": "tsc --noEmit --incremental false",
     "test:watch": "jest --watch",
     "test": "jest",
+    "format": "prettier -w .",
+    "format:check": "prettier -c .",
     "postbuild": "next-sitemap --config next-sitemap.config.js",
     "prepare": "husky install"
   },
@@ -56,11 +56,11 @@
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
-      "eslint --max-warnings=0 --fix",
-      "prettier --write"
+      "eslint --max-warnings=0",
+      "prettier -w"
     ],
     "**/*.{json,css,scss,md,webmanifest}": [
-      "prettier --write"
+      "prettier -w"
     ]
   }
 }
